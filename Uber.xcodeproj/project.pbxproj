@@ -14,6 +14,7 @@
 		564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B3827D8B2920005E2BF /* LoginController.swift */; };
 		564C9B3E27D8BADD0005E2BF /* UIView extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B3D27D8BADD0005E2BF /* UIView extensions.swift */; };
 		564C9B4027D8CE260005E2BF /* UITextField extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B3F27D8CE260005E2BF /* UITextField extensions.swift */; };
+		564C9B4227D8D5240005E2BF /* UIColor extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B4127D8D5240005E2BF /* UIColor extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		564C9B3827D8B2920005E2BF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		564C9B3D27D8BADD0005E2BF /* UIView extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView extensions.swift"; sourceTree = "<group>"; };
 		564C9B3F27D8CE260005E2BF /* UITextField extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField extensions.swift"; sourceTree = "<group>"; };
+		564C9B4127D8D5240005E2BF /* UIColor extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			children = (
 				564C9B3D27D8BADD0005E2BF /* UIView extensions.swift */,
 				564C9B3F27D8CE260005E2BF /* UITextField extensions.swift */,
+				564C9B4127D8D5240005E2BF /* UIColor extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */,
 				564C9B2227D8B1D20005E2BF /* SceneDelegate.swift in Sources */,
 				564C9B4027D8CE260005E2BF /* UITextField extensions.swift in Sources */,
+				564C9B4227D8D5240005E2BF /* UIColor extensions.swift in Sources */,
 				564C9B3E27D8BADD0005E2BF /* UIView extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
