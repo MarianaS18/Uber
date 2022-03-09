@@ -98,7 +98,6 @@ class SignUpController: UIViewController {
     
     // MARK: - objc functions
     @objc private func handleShowLogIn() {
-        let controller = LoginController()
-        navigationController?.pushViewController(controller, animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
