@@ -60,7 +60,7 @@ class LoginController: UIViewController {
             attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16),
                          NSAttributedString.Key.foregroundColor: UIColor.mainBlue]))
         
-       // button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         button.setAttributedTitle(attributedTitle, for: .normal)
         return button
     }()
@@ -81,6 +81,10 @@ class LoginController: UIViewController {
     // MARK: - Private functions
     private func setupUI() {
         view.backgroundColor = .backgroundColor
+        
+        // hide navigation bar
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
     }
     
     private func setupConstraints() {
@@ -98,5 +102,11 @@ class LoginController: UIViewController {
         view.addSubview(dontHaveAccountButton)
         dontHaveAccountButton.centerX(inView: view)
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, height: 32)
+    }
+    
+    // MARK: - objc functions
+    @objc private func handleShowSignUp() {
+        let controller = SignUpController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
