@@ -13,6 +13,7 @@
 		564C9B2927D8B1D30005E2BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 564C9B2827D8B1D30005E2BF /* Assets.xcassets */; };
 		564C9B2C27D8B1D30005E2BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564C9B2A27D8B1D30005E2BF /* LaunchScreen.storyboard */; };
 		564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B3827D8B2920005E2BF /* LoginController.swift */; };
+		564C9B3E27D8BADD0005E2BF /* UIView extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B3D27D8BADD0005E2BF /* UIView extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		564C9B2B27D8B1D30005E2BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		564C9B2D27D8B1D30005E2BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		564C9B3827D8B2920005E2BF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		564C9B3D27D8BADD0005E2BF /* UIView extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				564C9B3527D8B1F70005E2BF /* Controller */,
 				564C9B3427D8B1F50005E2BF /* Service */,
 				564C9B3327D8B1F00005E2BF /* Utils */,
+				564C9B3C27D8BAB40005E2BF /* Extensions */,
 				564C9B1F27D8B1D20005E2BF /* AppDelegate.swift */,
 				564C9B2127D8B1D20005E2BF /* SceneDelegate.swift */,
 				564C9B2527D8B1D20005E2BF /* Main.storyboard */,
@@ -105,6 +108,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		564C9B3C27D8BAB40005E2BF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				564C9B3D27D8BADD0005E2BF /* UIView extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 				564C9B2027D8B1D20005E2BF /* AppDelegate.swift in Sources */,
 				564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */,
 				564C9B2227D8B1D20005E2BF /* SceneDelegate.swift in Sources */,
+				564C9B3E27D8BADD0005E2BF /* UIView extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
