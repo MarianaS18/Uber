@@ -55,7 +55,7 @@ extension UIView {
         centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
-    func createContainerView(image: UIImage, textField: UITextField) -> UIView {
+    func createContainerView(image: UIImage, textField: UITextField? = nil, segmentedControl: UISegmentedControl? = nil) -> UIView {
         let containerView = UIView()
     
         let imageView = UIImageView()
@@ -65,9 +65,16 @@ extension UIView {
         imageView.centerY(inView: containerView)
         imageView.anchor(left: containerView.leftAnchor, paddingLeft: 8, width: 24, height: 24)
         
-        containerView.addSubview(textField)
-        textField.centerY(inView: imageView)
-        textField.anchor(left: imageView.rightAnchor, paddingLeft: 12)
+        if let textField = textField {
+            containerView.addSubview(textField)
+            textField.centerY(inView: imageView)
+            textField.anchor(left: imageView.rightAnchor, paddingLeft: 12)
+        }
+        
+        if let segmentedControl = segmentedControl {
+            containerView.addSubview(segmentedControl)
+            segmentedControl.anchor(left: imageView.rightAnchor, bottom: imageView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 8, paddingLeft: 8, paddingRight: 8)
+        }
         
         let separatorView = UIView()
         separatorView.backgroundColor = .lightGray

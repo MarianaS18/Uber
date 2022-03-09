@@ -10,11 +10,7 @@ import UIKit
 class LoginController: UIViewController {
     // MARK: - Private properties
     private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "UBER"
-        label.font = UIFont(name: "Avenir-Light", size: 36)
-        label.textColor = UIColor(white: 1, alpha: 0.8)
-        return label
+        return UILabel().createLabel(withText: "UBER", font: UIFont(name: "Avenir-Light", size: 36)!)
     }()
     
     private lazy var emailContainerView: UIView = {
@@ -38,30 +34,12 @@ class LoginController: UIViewController {
     }()
     
     private let loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Log In", for: .normal)
-        button.setTitleColor(UIColor(white: 1, alpha: 0.5), for: .normal)
-        button.backgroundColor = .mainBlue
-        button.layer.cornerRadius = 5
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        return button
+        return UIButton().createBlueButton(withText: "Log In")
     }()
     
     private let dontHaveAccountButton: UIButton = {
-        let button = UIButton(type: .system)
-        
-        let attributedTitle = NSMutableAttributedString(
-            string: "Don´t have an account? ",
-            attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-                         NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        attributedTitle.append(NSAttributedString(
-            string: "Sign Up",
-            attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16),
-                         NSAttributedString.Key.foregroundColor: UIColor.mainBlue]))
-        
+        let button = UIButton().createTextButton(text: "Don´t have an account? ", nextText: "Sign Up")
         button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
-        button.setAttributedTitle(attributedTitle, for: .normal)
         return button
     }()
 

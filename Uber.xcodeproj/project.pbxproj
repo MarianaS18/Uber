@@ -16,6 +16,8 @@
 		564C9B4027D8CE260005E2BF /* UITextField extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B3F27D8CE260005E2BF /* UITextField extensions.swift */; };
 		564C9B4227D8D5240005E2BF /* UIColor extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B4127D8D5240005E2BF /* UIColor extensions.swift */; };
 		564C9B4427D904F70005E2BF /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B4327D904F70005E2BF /* SignUpController.swift */; };
+		564C9B4827D913F90005E2BF /* UILabel extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B4727D913F90005E2BF /* UILabel extensions.swift */; };
+		564C9B4A27D914B80005E2BF /* UIButton extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B4927D914B80005E2BF /* UIButton extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		564C9B3F27D8CE260005E2BF /* UITextField extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField extensions.swift"; sourceTree = "<group>"; };
 		564C9B4127D8D5240005E2BF /* UIColor extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor extensions.swift"; sourceTree = "<group>"; };
 		564C9B4327D904F70005E2BF /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		564C9B4727D913F90005E2BF /* UILabel extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel extensions.swift"; sourceTree = "<group>"; };
+		564C9B4927D914B80005E2BF /* UIButton extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,8 @@
 				564C9B3D27D8BADD0005E2BF /* UIView extensions.swift */,
 				564C9B3F27D8CE260005E2BF /* UITextField extensions.swift */,
 				564C9B4127D8D5240005E2BF /* UIColor extensions.swift */,
+				564C9B4727D913F90005E2BF /* UILabel extensions.swift */,
+				564C9B4927D914B80005E2BF /* UIButton extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -195,7 +201,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				564C9B2027D8B1D20005E2BF /* AppDelegate.swift in Sources */,
+				564C9B4A27D914B80005E2BF /* UIButton extensions.swift in Sources */,
 				564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */,
+				564C9B4827D913F90005E2BF /* UILabel extensions.swift in Sources */,
 				564C9B4427D904F70005E2BF /* SignUpController.swift in Sources */,
 				564C9B2227D8B1D20005E2BF /* SceneDelegate.swift in Sources */,
 				564C9B4027D8CE260005E2BF /* UITextField extensions.swift in Sources */,
