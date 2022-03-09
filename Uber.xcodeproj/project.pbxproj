@@ -13,6 +13,7 @@
 		564C9B2C27D8B1D30005E2BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564C9B2A27D8B1D30005E2BF /* LaunchScreen.storyboard */; };
 		564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B3827D8B2920005E2BF /* LoginController.swift */; };
 		564C9B3E27D8BADD0005E2BF /* UIView extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B3D27D8BADD0005E2BF /* UIView extensions.swift */; };
+		564C9B4027D8CE260005E2BF /* UITextField extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B3F27D8CE260005E2BF /* UITextField extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		564C9B2D27D8B1D30005E2BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		564C9B3827D8B2920005E2BF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		564C9B3D27D8BADD0005E2BF /* UIView extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView extensions.swift"; sourceTree = "<group>"; };
+		564C9B3F27D8CE260005E2BF /* UITextField extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				564C9B3D27D8BADD0005E2BF /* UIView extensions.swift */,
+				564C9B3F27D8CE260005E2BF /* UITextField extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				564C9B2027D8B1D20005E2BF /* AppDelegate.swift in Sources */,
 				564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */,
 				564C9B2227D8B1D20005E2BF /* SceneDelegate.swift in Sources */,
+				564C9B4027D8CE260005E2BF /* UITextField extensions.swift in Sources */,
 				564C9B3E27D8BADD0005E2BF /* UIView extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

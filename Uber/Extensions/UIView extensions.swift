@@ -54,4 +54,26 @@ extension UIView {
     func centerY(inView view: UIView) {
         centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
+    
+    func createContainerView(image: UIImage, textField: UITextField) -> UIView {
+        let containerView = UIView()
+    
+        let imageView = UIImageView()
+        imageView.image = image
+        imageView.alpha = 0.87
+        containerView.addSubview(imageView)
+        imageView.centerY(inView: containerView)
+        imageView.anchor(left: containerView.leftAnchor, paddingLeft: 8, width: 24, height: 24)
+        
+        containerView.addSubview(textField)
+        textField.centerY(inView: imageView)
+        textField.anchor(left: imageView.rightAnchor, paddingLeft: 12)
+        
+        let separatorView = UIView()
+        separatorView.backgroundColor = .lightGray
+        containerView.addSubview(separatorView)
+        separatorView.anchor(top: containerView.bottomAnchor, left: containerView.leftAnchor, right: containerView.rightAnchor, paddingLeft: 8, paddingRight: 8, height: 0.75)
+        
+        return containerView
+    }
 }
