@@ -8,19 +8,27 @@
 import UIKit
 import Firebase
 
+protocol FirebaseServiceDelegate {
+    func didPassed()
+    func didFailedWithError(error: String)
+}
+
 class FirebaseService {
     
     let db = Firestore.firestore()
+    var delegate: FirebaseServiceDelegate?
     
     func signIn(email: String, username: String, password: String, accountTypeIndex: Int) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print("DEBUG: Failed to register user with error \(error.localizedDescription)")
-                return
+            if error != nil {
+                if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                    self.delegate?.didFailedWithError(error: errorCode.errorMessage)
+                }
             }
             else {
                 // add user to a collection of users
                 self.createUser(email, username, accountTypeIndex)
+                self.delegate?.didPassed()
             }
         }
     }
@@ -35,12 +43,14 @@ class FirebaseService {
     
     func logIn(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print("DEBUG: Failed to log user in with error \(error.localizedDescription)")
-                return
+            if error != nil {
+                if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                    self.delegate?.didFailedWithError(error: errorCode.errorMessage)
+                }
             }
             else {
                 print("DEBUG: Succesfully logged user in")
+                self.delegate?.didPassed()
             }
         }
     }

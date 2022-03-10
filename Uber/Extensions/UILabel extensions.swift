@@ -17,4 +17,11 @@ extension UILabel {
         return label
     }
     
+    func createErrorLabel() -> UILabel {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = .red
+        label.textAlignment = .center
+        return label
+    }
 }

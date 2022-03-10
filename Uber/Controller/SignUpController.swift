@@ -70,6 +70,12 @@ class SignUpController: UIViewController {
         return button
     }()
     
+    private let errorLabel: UILabel = {
+        let label = UILabel().createErrorLabel()
+        label.isHidden = true
+        return label
+    }()
+    
     // MARK: - Public properties
     var firebaseService = FirebaseService()
     
@@ -83,6 +89,7 @@ class SignUpController: UIViewController {
     // MARK: - Private funtions
     private func setupUI() {
         view.backgroundColor = .backgroundColor
+        firebaseService.delegate = self
     }
     
     private func setupConstraints() {
@@ -96,6 +103,10 @@ class SignUpController: UIViewController {
         stackView.spacing = 24
         view.addSubview(stackView)
         stackView.anchor(top: titleLabel.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16)
+        
+        view.addSubview(errorLabel)
+        errorLabel.centerX(inView: view)
+        errorLabel.anchor(top: stackView.bottomAnchor, paddingTop: 12)
         
         view.addSubview(alreadyHaveAccountButton)
         alreadyHaveAccountButton.centerX(inView: view)
@@ -116,4 +127,18 @@ class SignUpController: UIViewController {
         firebaseService.signIn(email: email, username: fullName, password: password, accountTypeIndex: accountTypeIndex)
     }
     
+}
+
+// MARK: - FirebaseServiceDelegate
+extension SignUpController: FirebaseServiceDelegate {
+    func didPassed() {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func didFailedWithError(error: String) {
+        errorLabel.isHidden = false
+        errorLabel.text = error
+    }
 }

@@ -45,6 +45,12 @@ class LoginController: UIViewController {
         button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
+    
+    private let errorLabel: UILabel = {
+        let label = UILabel().createErrorLabel()
+        label.isHidden = true
+        return label
+    }()
 
     // MARK: - Public properties
     var firebaseService = FirebaseService()
@@ -64,6 +70,8 @@ class LoginController: UIViewController {
 
     // MARK: - Private functions
     private func setupUI() {
+        firebaseService.delegate = self
+        
         view.backgroundColor = .backgroundColor
         
         // hide navigation bar
@@ -83,6 +91,10 @@ class LoginController: UIViewController {
         view.addSubview(stackView)
         stackView.anchor(top: titleLabel.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16)
         
+        view.addSubview(errorLabel)
+        errorLabel.centerX(inView: view)
+        errorLabel.anchor(top: stackView.bottomAnchor, paddingTop: 12)
+        
         view.addSubview(dontHaveAccountButton)
         dontHaveAccountButton.centerX(inView: view)
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, height: 32)
@@ -99,5 +111,20 @@ class LoginController: UIViewController {
         guard let password = passwordTextField.text else { return }
         
         firebaseService.logIn(email: email, password: password)
+    }
+}
+
+
+// MARK: - FirebaseServiceDelegate
+extension LoginController: FirebaseServiceDelegate {
+    func didPassed() {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func didFailedWithError(error: String) {
+        errorLabel.isHidden = false
+        errorLabel.text = error
     }
 }
