@@ -62,6 +62,13 @@ class HomeController: UIViewController {
     private func setupConstraints() {
         view.addSubview(locationInputView)
         locationInputView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingLeft: 32, paddingRight: 32, height: 50)
+        locationInputView.alpha = 0
+        locationInputView.delegate = self
+        
+        // animate view in
+        UIView.animate(withDuration: 2) {
+            self.locationInputView.alpha = 1
+        }
     }
     
 }
@@ -95,6 +102,15 @@ extension HomeController: CLLocationManagerDelegate {
         if status == .authorizedWhenInUse {
             locationManager.requestAlwaysAuthorization()
         }
+    }
+    
+}
+
+// MARK: - LocationInputActivationViewDelegate
+extension HomeController: LocationInputActivationViewDelegate {
+    
+    func presentLocationInputView() {
+        print("DEBUG: presentLocationInputView")
     }
     
 }
