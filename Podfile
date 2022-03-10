@@ -10,5 +10,6 @@ target 'Uber' do
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Storage'
+	pod 'Firebase/Firestore'
 	pod 'GeoFire', '>=1.1'
 end
