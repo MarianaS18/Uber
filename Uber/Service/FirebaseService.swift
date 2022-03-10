@@ -25,15 +25,33 @@ class FirebaseService {
         }
     }
     
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("DEBUG: Error signing out")
+        }
+    }
+    
     func logIn(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
-                print("DEBAG: Failed to log user in with error \(error.localizedDescription)")
+                print("DEBUG: Failed to log user in with error \(error.localizedDescription)")
                 return
             }
             else {
-                print("Succesfully logged user in")
+                print("DEBUG: Succesfully logged user in")
             }
+        }
+    }
+    
+    func checkIfUserLoggedIn() -> Bool {
+        if Auth.auth().currentUser?.uid == nil {
+            print("DEBUG: user is not logged in")
+            return false
+        } else {
+            print("DEBUG: user is logged in")
+            return true
         }
     }
     
@@ -44,9 +62,9 @@ class FirebaseService {
             "accountType": accountTypeIndex])
         { error in
                 if let error = error {
-                    print("Error adding document: \(error)")
+                    print("DEBUG: Error adding document: \(error)")
                 } else {
-                    print("Document added")
+                    print("DEBUG: Document added")
                 }
         }
     }

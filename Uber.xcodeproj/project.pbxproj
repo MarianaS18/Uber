@@ -21,6 +21,7 @@
 		564C9B4827D913F90005E2BF /* UILabel extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B4727D913F90005E2BF /* UILabel extensions.swift */; };
 		564C9B4A27D914B80005E2BF /* UIButton extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B4927D914B80005E2BF /* UIButton extensions.swift */; };
 		5671716C27D9FA81007168ED /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671716B27D9FA81007168ED /* FirebaseService.swift */; };
+		5671716E27DA0009007168ED /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671716D27DA0009007168ED /* HomeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		564C9B4727D913F90005E2BF /* UILabel extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel extensions.swift"; sourceTree = "<group>"; };
 		564C9B4927D914B80005E2BF /* UIButton extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton extensions.swift"; sourceTree = "<group>"; };
 		5671716B27D9FA81007168ED /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		5671716D27DA0009007168ED /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		A1B528BA43ADC17F7E3B80AE /* Pods-Uber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.debug.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.debug.xcconfig"; sourceTree = "<group>"; };
 		C78FCCF0D5A604B36D116752 /* Pods_Uber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 			children = (
 				564C9B3827D8B2920005E2BF /* LoginController.swift */,
 				564C9B4327D904F70005E2BF /* SignUpController.swift */,
+				5671716D27DA0009007168ED /* HomeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			files = (
 				564C9B2027D8B1D20005E2BF /* AppDelegate.swift in Sources */,
 				564C9B4A27D914B80005E2BF /* UIButton extensions.swift in Sources */,
+				5671716E27DA0009007168ED /* HomeController.swift in Sources */,
 				564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */,
 				564C9B4827D913F90005E2BF /* UILabel extensions.swift in Sources */,
 				564C9B4427D904F70005E2BF /* SignUpController.swift in Sources */,
