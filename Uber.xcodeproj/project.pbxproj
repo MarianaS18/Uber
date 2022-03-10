@@ -20,6 +20,7 @@
 		564C9B4427D904F70005E2BF /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B4327D904F70005E2BF /* SignUpController.swift */; };
 		564C9B4827D913F90005E2BF /* UILabel extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B4727D913F90005E2BF /* UILabel extensions.swift */; };
 		564C9B4A27D914B80005E2BF /* UIButton extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B4927D914B80005E2BF /* UIButton extensions.swift */; };
+		5671716C27D9FA81007168ED /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671716B27D9FA81007168ED /* FirebaseService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		564C9B4327D904F70005E2BF /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		564C9B4727D913F90005E2BF /* UILabel extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel extensions.swift"; sourceTree = "<group>"; };
 		564C9B4927D914B80005E2BF /* UIButton extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton extensions.swift"; sourceTree = "<group>"; };
+		5671716B27D9FA81007168ED /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		A1B528BA43ADC17F7E3B80AE /* Pods-Uber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.debug.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.debug.xcconfig"; sourceTree = "<group>"; };
 		C78FCCF0D5A604B36D116752 /* Pods_Uber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,6 +103,7 @@
 		564C9B3427D8B1F50005E2BF /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5671716B27D9FA81007168ED /* FirebaseService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				564C9B4827D913F90005E2BF /* UILabel extensions.swift in Sources */,
 				564C9B4427D904F70005E2BF /* SignUpController.swift in Sources */,
 				564C9B2227D8B1D20005E2BF /* SceneDelegate.swift in Sources */,
+				5671716C27D9FA81007168ED /* FirebaseService.swift in Sources */,
 				564C9B4027D8CE260005E2BF /* UITextField extensions.swift in Sources */,
 				564C9B4227D8D5240005E2BF /* UIColor extensions.swift in Sources */,
 				564C9B3E27D8BADD0005E2BF /* UIView extensions.swift in Sources */,
@@ -335,6 +339,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -396,6 +401,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

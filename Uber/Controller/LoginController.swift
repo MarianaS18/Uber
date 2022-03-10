@@ -8,6 +8,7 @@
 import UIKit
 
 class LoginController: UIViewController {
+    
     // MARK: - Private properties
     private let titleLabel: UILabel = {
         return UILabel().createLabel(withText: "UBER", font: UIFont(name: "Avenir-Light", size: 36)!)
@@ -34,7 +35,9 @@ class LoginController: UIViewController {
     }()
     
     private let loginButton: UIButton = {
-        return UIButton().createBlueButton(withText: "Log In")
+        let button = UIButton().createBlueButton(withText: "Log In")
+        button.addTarget(self, action: #selector(handleLogIn), for: .touchUpInside)
+        return button
     }()
     
     private let dontHaveAccountButton: UIButton = {
@@ -43,6 +46,9 @@ class LoginController: UIViewController {
         return button
     }()
 
+    // MARK: - Public properties
+    var firebaseService = FirebaseService()
+    
     // MARK: - View functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,5 +92,12 @@ class LoginController: UIViewController {
     @objc private func handleShowSignUp() {
         let controller = SignUpController()
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc private func handleLogIn() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        firebaseService.logIn(email: email, password: password)
     }
 }

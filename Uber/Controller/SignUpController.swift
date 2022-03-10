@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 class SignUpController: UIViewController {
     
@@ -71,6 +70,9 @@ class SignUpController: UIViewController {
         return button
     }()
     
+    // MARK: - Public properties
+    var firebaseService = FirebaseService()
+    
     // MARK: - View functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,27 +113,7 @@ class SignUpController: UIViewController {
         guard let fullName = nameTextField.text else { return }
         let accountTypeIndex = segmentedControl.selectedSegmentIndex
 
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print("Failed to register user with error \(error)")
-                return
-            }
-            else {
-                // add user to a collection of users
-                Firestore.firestore().collection("users").addDocument(data: [
-                    "username": fullName,
-                    "email": email,
-                    "accountType": accountTypeIndex])
-                { error in
-                        if let error = error {
-                            print("Error adding document: \(error)")
-                        } else {
-                            print("Document added")
-                        }
-                }
-                
-            }
-        }
+        firebaseService.signIn(email: email, username: fullName, password: password, accountTypeIndex: accountTypeIndex)
     }
     
 }
