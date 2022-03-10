@@ -41,13 +41,17 @@ class HomeController: UIViewController {
                 self.present(nav, animated: true, completion: nil)
             }
         } else {
-            setupMapKit()
+            setupMapView()
         }
     }
     
-    private func setupMapKit() {
+    private func setupMapView() {
         view.addSubview(mapView)
         mapView.frame = view.frame
+        
+        // show user location
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
     }
     
 }
