@@ -12,6 +12,7 @@ class HomeController: UIViewController {
     // MARK: - Private properties
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
+    private let locationInputView = LocationInputActivationView()
     
     // MARK: - Public properties
     var firebaseService = FirebaseService()
@@ -31,6 +32,8 @@ class HomeController: UIViewController {
     // MARK: - Private functions
     private func setupUI() {
         view.backgroundColor = .backgroundColor
+        
+        
     }
     
     private func checkUser() {
@@ -52,6 +55,13 @@ class HomeController: UIViewController {
         // show user location
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        view.addSubview(locationInputView)
+        locationInputView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingLeft: 32, paddingRight: 32, height: 50)
     }
     
 }
