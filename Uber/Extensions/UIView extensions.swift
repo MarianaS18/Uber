@@ -83,4 +83,11 @@ extension UIView {
         
         return containerView
     }
+    
+    func addShadow() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.25
+        layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        layer.masksToBounds = false
+    }
 }

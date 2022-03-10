@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3173F3E5F4536C822F793D44 /* Pods_Uber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78FCCF0D5A604B36D116752 /* Pods_Uber.framework */; };
 		5616EC2C27DA2ABD00B701FF /* LocationInputActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616EC2B27DA2ABD00B701FF /* LocationInputActivationView.swift */; };
+		5616EC2E27DA3F9600B701FF /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616EC2D27DA3F9600B701FF /* LocationInputView.swift */; };
 		561F249227D929B3005A9EF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 561F249127D929B3005A9EF0 /* GoogleService-Info.plist */; };
 		564C9B2027D8B1D20005E2BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B1F27D8B1D20005E2BF /* AppDelegate.swift */; };
 		564C9B2227D8B1D20005E2BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B2127D8B1D20005E2BF /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		262C3BB159B1B9CC540106A4 /* Pods-Uber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.release.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.release.xcconfig"; sourceTree = "<group>"; };
 		5616EC2B27DA2ABD00B701FF /* LocationInputActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputActivationView.swift; sourceTree = "<group>"; };
+		5616EC2D27DA3F9600B701FF /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
 		561F249127D929B3005A9EF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		564C9B1C27D8B1D20005E2BF /* Uber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		564C9B1F27D8B1D20005E2BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				5616EC2B27DA2ABD00B701FF /* LocationInputActivationView.swift */,
+				5616EC2D27DA3F9600B701FF /* LocationInputView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				564C9B4A27D914B80005E2BF /* UIButton extensions.swift in Sources */,
 				5671716E27DA0009007168ED /* HomeController.swift in Sources */,
 				564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */,
+				5616EC2E27DA3F9600B701FF /* LocationInputView.swift in Sources */,
 				564C9B4827D913F90005E2BF /* UILabel extensions.swift in Sources */,
 				564C9B4427D904F70005E2BF /* SignUpController.swift in Sources */,
 				564C9B2227D8B1D20005E2BF /* SceneDelegate.swift in Sources */,

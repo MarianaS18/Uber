@@ -42,10 +42,7 @@ class LocationInputActivationView: UIView {
     // MARK: - Private functions
     private func setupUI() {
         backgroundColor = .white
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.25
-        layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-        layer.masksToBounds = false
+        addShadow()
         
         addSubview(indicatorView)
         indicatorView.anchor(left: self.leftAnchor, paddingLeft: 16, width: 5, height: 5)

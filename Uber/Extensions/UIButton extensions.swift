@@ -36,4 +36,10 @@ extension UIButton {
         return button
     }
     
+    func createBackButton() -> UIButton {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "arrow.backward")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        return button
+    }
+    
 }

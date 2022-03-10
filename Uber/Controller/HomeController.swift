@@ -12,7 +12,8 @@ class HomeController: UIViewController {
     // MARK: - Private properties
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
-    private let locationInputView = LocationInputActivationView()
+    private let locationInputActivationView = LocationInputActivationView()
+    private let locationInputView = LocationInputView()
     
     // MARK: - Public properties
     var firebaseService = FirebaseService()
@@ -33,7 +34,9 @@ class HomeController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .backgroundColor
         
-        
+        // hide navigation bar
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
     }
     
     private func checkUser() {
@@ -60,14 +63,26 @@ class HomeController: UIViewController {
     }
     
     private func setupConstraints() {
-        view.addSubview(locationInputView)
-        locationInputView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingLeft: 32, paddingRight: 32, height: 50)
-        locationInputView.alpha = 0
-        locationInputView.delegate = self
+        view.addSubview(locationInputActivationView)
+        locationInputActivationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 40, paddingLeft: 32, paddingRight: 32, height: 50)
+        locationInputActivationView.alpha = 0
+        locationInputActivationView.delegate = self
         
-        // animate view in
-        UIView.animate(withDuration: 2) {
+        UIView.animate(withDuration: 1) {
+            self.locationInputActivationView.alpha = 1
+        }
+    }
+    
+    private func setupLocationInputView() {
+        locationInputView.delegate = self
+        view.addSubview(locationInputView)
+        locationInputView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 200)
+        locationInputView.alpha = 0
+        
+        UIView.animate(withDuration: 0.5, animations: {
             self.locationInputView.alpha = 1
+        }) { _ in
+            print("DEBUG: Present table view")
         }
     }
     
@@ -110,7 +125,23 @@ extension HomeController: CLLocationManagerDelegate {
 extension HomeController: LocationInputActivationViewDelegate {
     
     func presentLocationInputView() {
-        print("DEBUG: presentLocationInputView")
+        locationInputActivationView.alpha = 0
+        setupLocationInputView()
+    }
+    
+}
+
+// MARK: - LocationInputViewDelegate
+extension HomeController: LocationInputViewDelegate {
+    
+    func dismissLocationInputView() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.locationInputView.alpha = 0
+        }) { _ in
+            UIView.animate(withDuration: 0.3) {
+                self.locationInputActivationView.alpha = 1
+            }
+        }
     }
     
 }

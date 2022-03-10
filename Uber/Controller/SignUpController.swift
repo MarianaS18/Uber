@@ -90,6 +90,10 @@ class SignUpController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .backgroundColor
         firebaseService.delegate = self
+        
+        // hide navigation bar
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
     }
     
     private func setupConstraints() {
