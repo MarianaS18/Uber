@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import MapKit
 
 class HomeController: UIViewController {
     // MARK: - Private properties
+    private let mapView = MKMapView()
     
     // MARK: - Public properties
     var firebaseService = FirebaseService()
@@ -16,22 +18,33 @@ class HomeController: UIViewController {
     // MARK: - View functions
     override func viewDidLoad() {
         super.viewDidLoad()
+//        firebaseService.signOut()
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        checkUser()
     }
     
     // MARK: - Private functions
     private func setupUI() {
         view.backgroundColor = .backgroundColor
-        
+    }
+    
+    private func checkUser() {
         if !firebaseService.checkIfUserLoggedIn() {
             DispatchQueue.main.async {
                 let nav = UINavigationController(rootViewController: LoginController())
                 nav.modalPresentationStyle = .fullScreen
                 self.present(nav, animated: true, completion: nil)
             }
-            
+        } else {
+            setupMapKit()
         }
     }
     
-    
+    private func setupMapKit() {
+        view.addSubview(mapView)
+        mapView.frame = view.frame
+    }
 }
