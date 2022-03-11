@@ -11,7 +11,7 @@ class SignUpController: UIViewController {
     
     // MARK: - Private properties
     private let titleLabel: UILabel = {
-        return UILabel().createLabel(withText: "UBER", font: UIFont(name: "Avenir-Light", size: 36)!)
+        return UILabel().createLabel("UBER", UIFont(name: "Avenir-Light", size: 36)!, UIColor(white: 1, alpha: 0.8))
     }()
     
     private lazy var emailContainerView: UIView = {

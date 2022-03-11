@@ -9,11 +9,11 @@ import UIKit
 
 extension UILabel {
     
-    func createLabel(withText text: String, font: UIFont) -> UILabel {
+    func createLabel(_ text: String, _ font: UIFont, _ color: UIColor) -> UILabel {
         let label = UILabel()
         label.text = text
         label.font = font
-        label.textColor = UIColor(white: 1, alpha: 0.8)
+        label.textColor = color
         return label
     }
     

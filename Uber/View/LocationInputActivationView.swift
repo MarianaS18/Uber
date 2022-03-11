@@ -20,8 +20,7 @@ class LocationInputActivationView: UIView {
     }()
 
     private let placeholderLabel: UILabel = {
-        let label = UILabel().createLabel(withText: "Where to?", font: UIFont.systemFont(ofSize: 18))
-        label.textColor = .darkGray
+        let label = UILabel().createLabel("Where to?", UIFont.systemFont(ofSize: 18), UIColor.darkGray)
         return label
     }()
     
