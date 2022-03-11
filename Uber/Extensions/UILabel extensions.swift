@@ -8,7 +8,7 @@
 import UIKit
 
 extension UILabel {
-    
+
     func createLabel(_ text: String, _ font: UIFont, _ color: UIColor) -> UILabel {
         let label = UILabel()
         label.text = text

@@ -154,12 +154,11 @@ extension HomeController: LocationInputActivationViewDelegate {
 extension HomeController: LocationInputViewDelegate {
     
     func dismissLocationInputView() {
-        locationInputView.removeFromSuperview()
-        
         UIView.animate(withDuration: 0.3, animations: {
             self.locationInputView.alpha = 0
             self.tableView.frame.origin.y = self.view.frame.height
         }) { _ in
+            self.locationInputView.removeFromSuperview()
             UIView.animate(withDuration: 0.3) {
                 self.locationInputActivationView.alpha = 1
             }
@@ -168,13 +167,20 @@ extension HomeController: LocationInputViewDelegate {
     
 }
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
+// MARK: - UITableViewDelegate/DataSource
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        "Test"
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return section == 0 ? 2: 5
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.locationCellId, for: indexPath) as! LocationCell
