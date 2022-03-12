@@ -80,7 +80,7 @@ class FirebaseService {
         }
     }
     
-    func fetchUserData(completion: @escaping(String) -> Void) {
+    func fetchUserData(completion: @escaping(User) -> Void) {
         guard let userEmail = currentUser?.email else { return }
         
         db.collection("users").whereField("email", isEqualTo: userEmail).getDocuments { (querySnapshot, error) in
@@ -89,8 +89,8 @@ class FirebaseService {
             }
             else {
                 for document in querySnapshot!.documents {
-                    guard let username = document.get("username") as? String else { return }
-                    completion(username)
+                    let user = User(document: document)
+                    completion(user)
                 }
             }
         }

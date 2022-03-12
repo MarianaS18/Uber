@@ -12,6 +12,13 @@ protocol LocationInputViewDelegate: AnyObject {
 }
 
 class LocationInputView: UIView {
+    
+    // MARK: - Public properties
+    var user: User? {
+        didSet {
+           self.titleLabel.text = user?.username
+        }
+    }
 
     // MARK: - Private properties
     private let backButton: UIButton = {
@@ -71,7 +78,6 @@ class LocationInputView: UIView {
         super.init(frame: frame)
         setupUI()
         setupConstraints()
-        fetchData()
     }
     
     required init?(coder: NSCoder) {
@@ -115,12 +121,6 @@ class LocationInputView: UIView {
         linkingView.anchor(top: startLocationIndicatorView.bottomAnchor, bottom: destinationIndicatorView.topAnchor, paddingTop: 4, paddingBottom: 4, width: 1)
         linkingView.anchor(top: startLocationIndicatorView.bottomAnchor, paddingTop: 8, width: 2, height: 30)
         
-    }
-    
-    private func fetchData() {
-        FirebaseService.shared.fetchUserData { username in
-            self.titleLabel.text = username
-        }
     }
     
     // MARK: - objc functions

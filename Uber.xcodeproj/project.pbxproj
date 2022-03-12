@@ -27,6 +27,7 @@
 		5671717027DA0737007168ED /* AuthErrorCode extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671716F27DA0737007168ED /* AuthErrorCode extensions.swift */; };
 		56784E1E27DB596E00F069CA /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E1D27DB596E00F069CA /* LocationCell.swift */; };
 		56784E2027DB5D3000F069CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E1F27DB5D3000F069CA /* Constants.swift */; };
+		56784E2227DCCEE400F069CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E2127DCCEE400F069CA /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		5671716F27DA0737007168ED /* AuthErrorCode extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthErrorCode extensions.swift"; sourceTree = "<group>"; };
 		56784E1D27DB596E00F069CA /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		56784E1F27DB5D3000F069CA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		56784E2127DCCEE400F069CA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A1B528BA43ADC17F7E3B80AE /* Pods-Uber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.debug.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.debug.xcconfig"; sourceTree = "<group>"; };
 		C78FCCF0D5A604B36D116752 /* Pods_Uber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -144,6 +146,7 @@
 		564C9B3727D8B1FB0005E2BF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				56784E2127DCCEE400F069CA /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				5671716E27DA0009007168ED /* HomeController.swift in Sources */,
 				564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */,
 				56784E1E27DB596E00F069CA /* LocationCell.swift in Sources */,
+				56784E2227DCCEE400F069CA /* User.swift in Sources */,
 				56784E2027DB5D3000F069CA /* Constants.swift in Sources */,
 				5616EC2E27DA3F9600B701FF /* LocationInputView.swift in Sources */,
 				564C9B4827D913F90005E2BF /* UILabel extensions.swift in Sources */,

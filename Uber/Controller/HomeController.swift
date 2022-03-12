@@ -18,12 +18,19 @@ class HomeController: UIViewController {
     
     private let locationInputViewHeight: CGFloat = 200
     
+    private var user: User? {
+        didSet {
+            locationInputView.user = user
+        }
+    }
+    
     
     // MARK: - View functions
     override func viewDidLoad() {
         super.viewDidLoad()
         // FirebaseService.shared.signOut()
         setupUI()
+        fetchUserData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,6 +107,12 @@ class HomeController: UIViewController {
         tableView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: tableViewHeight)
         
         view.addSubview(tableView)
+    }
+    
+    private func fetchUserData() {
+        FirebaseService.shared.fetchUserData { user in
+            self.user = user
+        }
     }
     
 }
