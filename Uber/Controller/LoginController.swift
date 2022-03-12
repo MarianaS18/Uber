@@ -51,9 +51,6 @@ class LoginController: UIViewController {
         label.isHidden = true
         return label
     }()
-
-    // MARK: - Public properties
-    var firebaseService = FirebaseService()
     
     // MARK: - View functions
     override func viewDidLoad() {
@@ -70,7 +67,7 @@ class LoginController: UIViewController {
 
     // MARK: - Private functions
     private func setupUI() {
-        firebaseService.delegate = self
+        FirebaseService.shared.delegate = self
         
         view.backgroundColor = .backgroundColor
         
@@ -110,7 +107,7 @@ class LoginController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        firebaseService.logIn(email: email, password: password)
+        FirebaseService.shared.logIn(email: email, password: password)
     }
 }
 

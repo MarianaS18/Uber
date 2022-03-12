@@ -76,9 +76,6 @@ class SignUpController: UIViewController {
         return label
     }()
     
-    // MARK: - Public properties
-    var firebaseService = FirebaseService()
-    
     // MARK: - View functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +86,7 @@ class SignUpController: UIViewController {
     // MARK: - Private funtions
     private func setupUI() {
         view.backgroundColor = .backgroundColor
-        firebaseService.delegate = self
+        FirebaseService.shared.delegate = self
         
         // hide navigation bar
         navigationController?.navigationBar.isHidden = true
@@ -128,7 +125,7 @@ class SignUpController: UIViewController {
         guard let fullName = nameTextField.text else { return }
         let accountTypeIndex = segmentedControl.selectedSegmentIndex
 
-        firebaseService.signIn(email: email, username: fullName, password: password, accountTypeIndex: accountTypeIndex)
+        FirebaseService.shared.signIn(email: email, username: fullName, password: password, accountTypeIndex: accountTypeIndex)
     }
     
 }

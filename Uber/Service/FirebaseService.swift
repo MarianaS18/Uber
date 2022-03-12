@@ -14,9 +14,10 @@ protocol FirebaseServiceDelegate {
 }
 
 class FirebaseService {
-    
+    static let shared = FirebaseService()
     let db = Firestore.firestore()
     var delegate: FirebaseServiceDelegate?
+    private let currentUser = Auth.auth().currentUser
     
     func signIn(email: String, username: String, password: String, accountTypeIndex: Int) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -68,7 +69,7 @@ class FirebaseService {
     private func createUser(_ email: String, _ username: String, _ accountTypeIndex: Int) {
         self.db.collection("users").addDocument(data: [
             "username": username,
-            "email": email,
+            "email": email.lowercased(),
             "accountType": accountTypeIndex])
         { error in
                 if let error = error {
@@ -78,4 +79,21 @@ class FirebaseService {
                 }
         }
     }
+    
+    func fetchUserData(completion: @escaping(String) -> Void) {
+        guard let userEmail = currentUser?.email else { return }
+        
+        db.collection("users").whereField("email", isEqualTo: userEmail).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("DEBUG: Error getting documents: \(error.localizedDescription)")
+            }
+            else {
+                for document in querySnapshot!.documents {
+                    guard let username = document.get("username") as? String else { return }
+                    completion(username)
+                }
+            }
+        }
+    }
 }
+

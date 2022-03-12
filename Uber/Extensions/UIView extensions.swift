@@ -69,6 +69,8 @@ extension UIView {
         
         if let textField = textField {
             containerView.addSubview(textField)
+            textField.autocapitalizationType = .none
+            textField.autocorrectionType = .no
             textField.centerY(inView: imageView)
             textField.anchor(left: imageView.rightAnchor, paddingLeft: 12)
         }

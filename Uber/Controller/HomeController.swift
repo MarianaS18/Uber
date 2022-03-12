@@ -18,13 +18,11 @@ class HomeController: UIViewController {
     
     private let locationInputViewHeight: CGFloat = 200
     
-    // MARK: - Public properties
-    var firebaseService = FirebaseService()
     
     // MARK: - View functions
     override func viewDidLoad() {
         super.viewDidLoad()
-//        firebaseService.signOut()
+        // FirebaseService.shared.signOut()
         setupUI()
     }
     
@@ -43,7 +41,7 @@ class HomeController: UIViewController {
     }
     
     private func checkUser() {
-        if !firebaseService.checkIfUserLoggedIn() {
+        if !FirebaseService.shared.checkIfUserLoggedIn() {
             DispatchQueue.main.async {
                 let nav = UINavigationController(rootViewController: LoginController())
                 nav.modalPresentationStyle = .fullScreen
