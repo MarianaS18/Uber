@@ -7,9 +7,10 @@ target 'Uber' do
 
   # Pods for Uber
   # pod 'Firebase/Core'
-	pod 'Firebase/Database'
-	pod 'Firebase/Auth'
-	pod 'Firebase/Storage'
-	pod 'Firebase/Firestore'
-	pod 'GeoFire', '>=1.1'
+	 pod 'Firebase/Database'
+	 pod 'Firebase/Auth'
+	 pod 'Firebase/Storage'
+	 pod 'Firebase/Firestore'
+	# pod 'GeoFire', '>=1.1'
+   pod 'Geofirestore'
 end

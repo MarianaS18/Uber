@@ -125,7 +125,7 @@ class SignUpController: UIViewController {
         guard let fullName = nameTextField.text else { return }
         let accountTypeIndex = segmentedControl.selectedSegmentIndex
 
-        FirebaseService.shared.signIn(email: email, username: fullName, password: password, accountTypeIndex: accountTypeIndex)
+        FirebaseService.shared.signUp(email: email, username: fullName, password: password, accountTypeIndex: accountTypeIndex)
     }
     
 }

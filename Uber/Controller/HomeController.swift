@@ -11,7 +11,7 @@ import MapKit
 class HomeController: UIViewController {
     // MARK: - Private properties
     private let mapView = MKMapView()
-    private let locationManager = CLLocationManager()
+    private let locationManager = LocationHandler.shared.locationManager
     private let locationInputActivationView = LocationInputActivationView()
     private let locationInputView = LocationInputView()
     private let tableView = UITableView()
@@ -118,33 +118,24 @@ class HomeController: UIViewController {
 }
 
 // MARK: - LocationServices
-extension HomeController: CLLocationManagerDelegate {
+extension HomeController {
     
    private func enableLocationServices() {
-       locationManager.delegate = self
-        
         switch CLLocationManager().authorizationStatus {
         case .notDetermined:
             print("DEBUG: not determined")
-            locationManager.requestWhenInUseAuthorization()
+            locationManager?.requestWhenInUseAuthorization()
         case .restricted, .denied:
             break
         case .authorizedAlways:
             print("DEBUG: authorized always")
-            locationManager.startUpdatingLocation()
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager?.startUpdatingLocation()
+            locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         case .authorizedWhenInUse:
             print("DEBUG: authorized when in use")
-            locationManager.requestAlwaysAuthorization()
+            locationManager?.requestAlwaysAuthorization()
         @unknown default:
             break
-        }
-    }
-    
-    // if user chooses to allow location when using app, new message shows up immediately
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.requestAlwaysAuthorization()
         }
     }
     
