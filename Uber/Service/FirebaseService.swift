@@ -37,7 +37,7 @@ class FirebaseService {
             }
             else {
                 // add location if driver
-                self.xxx(dokId: email, accountType: accountTypeIndex)
+                self.createDriverLocation(dokId: email, accountType: accountTypeIndex)
                 // add user to a collection of users
                 self.createUser(email, username, accountTypeIndex)
                 self.delegate?.didPassed()
@@ -108,7 +108,7 @@ class FirebaseService {
         }
     }
     
-    private func xxx(dokId: String, accountType: Int) {
+    private func createDriverLocation(dokId: String, accountType: Int) {
         let geoFirestore = GeoFirestore(collectionRef: driverLocationCollection)
         
         if accountType == 1 {
