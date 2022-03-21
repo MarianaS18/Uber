@@ -23,7 +23,7 @@ class LocationInputView: UIView {
     // MARK: - Private properties
     private let backButton: UIButton = {
         let button = UIButton().createBackButton()
-        button.addTarget(self, action: #selector(handleBackTapped), for: .touchUpInside)
+        button.addTarget(LocationInputView.self, action: #selector(handleBackTapped), for: .touchUpInside)
         return button
     }()
     

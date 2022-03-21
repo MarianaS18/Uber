@@ -7,11 +7,13 @@
 
 import Foundation
 import Firebase
+import CoreLocation
 
 struct User {
     let username: String
     let email: String
     let accountType: Int
+    var location: CLLocation?
     
     init(document: QueryDocumentSnapshot) {
         self.username = document.get("username") as? String ?? ""

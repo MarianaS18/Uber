@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import Geofirestore
+import CoreLocation
 
 protocol FirebaseServiceDelegate {
     func didPassed()
@@ -93,6 +94,25 @@ class FirebaseService {
         }
     }
     
+    func fetchDrivers(location: CLLocation, completion: @escaping(User) -> Void) {
+        guard let userEmail = currentUser?.email else { return }
+        let geoFirestore = GeoFirestore(collectionRef: driverLocationCollection)
+        
+        geoFirestore.getLocation(forDocumentWithID: userEmail) { (location: CLLocation?, error) in
+            if let error = error {
+                print("DEBUG: An error occurred: \(error.localizedDescription)")
+            } else if let location = location {
+                self.fetchUserData { user in
+                    var driver = user
+                    driver.location = location
+                    completion(driver)
+                }
+            } else {
+                print("DEBUG: GeoFirestore does not contain a location for this document")
+            }
+        }
+    }
+    
     // MARK: - Private functions
     private func createUser(_ email: String, _ username: String, _ accountTypeIndex: Int) {
         self.usersCollection.addDocument(data: [
@@ -120,7 +140,6 @@ class FirebaseService {
                 }
             }
         }
-        
     }
 
 }
