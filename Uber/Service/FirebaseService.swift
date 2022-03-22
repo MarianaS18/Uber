@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import Geofirestore
 import CoreLocation
+import MapKit
 
 protocol FirebaseServiceDelegate {
     func didPassed()
@@ -94,20 +95,23 @@ class FirebaseService {
     }
     
     func fetchDrivers(location: CLLocation, completion: @escaping(User) -> Void) {
-        guard let userEmail = Auth.auth().currentUser?.email else { return }
+        // guard let userEmail = Auth.auth().currentUser?.email else { return }
         let geoFirestore = GeoFirestore(collectionRef: driverLocationCollection)
         
-        geoFirestore.getLocation(forDocumentWithID: userEmail) { (location: CLLocation?, error) in
-            if let error = error {
-                print("DEBUG: An error occurred: \(error.localizedDescription)")
-            } else if let location = location {
+        // Query locations at 'location' with a radius of 600 meters
+        let query = geoFirestore.query(withCenter: location, radius: 0.6)
+
+        // observe events for a geo query
+        _ = query.observe(.documentEntered, with: { (email, location) in
+            if let location = location {
                 self.fetchUserData { user in
                     var driver = user
                     driver.location = location
+                    print("DEBUG: DRIVER: \(driver)")
                     completion(driver)
                 }
             }
-        }
+        })
     }
     
     // MARK: - Private functions

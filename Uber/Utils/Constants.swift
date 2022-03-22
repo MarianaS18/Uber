@@ -9,5 +9,6 @@ import Foundation
 
 class Constants {
     static let locationCellId = "LocationCell"
+    static let annotationId = "DriverAnnotation"
 }
 

@@ -69,6 +69,8 @@ class HomeController: UIViewController {
         mapView.userTrackingMode = .follow
         
         setupConstraints()
+        
+        mapView.delegate = self
     }
     
     private func setupConstraints() {
@@ -197,6 +199,20 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.locationCellId, for: indexPath) as! LocationCell
         return cell
+    }
+    
+}
+
+// MARK: - MKMapViewDelegate
+extension HomeController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? DriverAnnotation {
+            let view = MKAnnotationView(annotation: annotation, reuseIdentifier: Constants.annotationId)
+            view.image = UIImage(systemName: "arrow.right.circle.fill")
+            return view
+        }
+        return nil
     }
     
 }
