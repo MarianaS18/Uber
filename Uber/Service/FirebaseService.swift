@@ -107,7 +107,6 @@ class FirebaseService {
                 self.fetchUserData { user in
                     var driver = user
                     driver.location = location
-                    print("DEBUG: DRIVER: \(driver)")
                     completion(driver)
                 }
             }

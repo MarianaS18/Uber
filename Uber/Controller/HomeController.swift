@@ -123,7 +123,22 @@ class HomeController: UIViewController {
         FirebaseService.shared.fetchDrivers(location: location) { driver in
             guard let coordinate = driver.location?.coordinate else { return }
             let annotation = DriverAnnotation(uid: driver.email, coordinate: coordinate)
-            self.mapView.addAnnotation(annotation)
+            
+            var driverIsVisible: Bool {
+                return self.mapView.annotations.contains(where: { annotation -> Bool in
+                    guard let driverAnnotation = annotation as? DriverAnnotation else { return false }
+                    if driverAnnotation.uid == driver.email {
+                        // update position
+                        driverAnnotation.updateAnnotationPosition(withCoordinate: coordinate)
+                        return true
+                    }
+                    return false
+                })
+            }
+            
+            if !driverIsVisible {
+                self.mapView.addAnnotation(annotation)
+            }
         }
     }
     
