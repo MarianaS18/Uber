@@ -21,7 +21,6 @@ class FirebaseService {
     
     // MARK: - Private properties
     private let usersCollection = Firestore.firestore().collection("users")
-    private let currentUser = Auth.auth().currentUser
     private let driverLocationCollection = Firestore.firestore().collection("driver-locations")
     private var location = LocationHandler.shared.locationManager.location
     
@@ -79,7 +78,7 @@ class FirebaseService {
     }
     
     func fetchUserData(completion: @escaping(User) -> Void) {
-        guard let userEmail = currentUser?.email else { return }
+        guard let userEmail = Auth.auth().currentUser?.email else { return }
         
         usersCollection.whereField("email", isEqualTo: userEmail).getDocuments { (querySnapshot, error) in
             if let error = error {
@@ -95,7 +94,7 @@ class FirebaseService {
     }
     
     func fetchDrivers(location: CLLocation, completion: @escaping(User) -> Void) {
-        guard let userEmail = currentUser?.email else { return }
+        guard let userEmail = Auth.auth().currentUser?.email else { return }
         let geoFirestore = GeoFirestore(collectionRef: driverLocationCollection)
         
         geoFirestore.getLocation(forDocumentWithID: userEmail) { (location: CLLocation?, error) in
@@ -107,8 +106,6 @@ class FirebaseService {
                     driver.location = location
                     completion(driver)
                 }
-            } else {
-                print("DEBUG: GeoFirestore does not contain a location for this document")
             }
         }
     }

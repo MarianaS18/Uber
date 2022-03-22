@@ -28,7 +28,7 @@ class HomeController: UIViewController {
     // MARK: - View functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        //FirebaseService.shared.signOut()
+        // FirebaseService.shared.signOut()
         setupUI()
         fetchUserData()
     }
@@ -36,7 +36,6 @@ class HomeController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         checkUser()
         enableLocationServices()
-        fetchDrivers()
     }
     
     // MARK: - Private functions
@@ -57,6 +56,7 @@ class HomeController: UIViewController {
             }
         } else {
             setupMapView()
+            fetchDrivers()
         }
     }
     
@@ -118,8 +118,10 @@ class HomeController: UIViewController {
     
     private func fetchDrivers() {
         guard let location = locationManager?.location else { return }
-        FirebaseService.shared.fetchDrivers(location: location) { user in
-            print("DEBUG: \(user.location)")
+        FirebaseService.shared.fetchDrivers(location: location) { driver in
+            guard let coordinate = driver.location?.coordinate else { return }
+            let annotation = DriverAnnotation(uid: driver.email, coordinate: coordinate)
+            self.mapView.addAnnotation(annotation)
         }
     }
     
