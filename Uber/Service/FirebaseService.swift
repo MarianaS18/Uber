@@ -27,6 +27,7 @@ class FirebaseService {
     
     // MARK: - Public properties
     var delegate: FirebaseServiceDelegate?
+    let currentEmail = Auth.auth().currentUser?.email
 
     // MARK: - Public functions
     func signUp(email: String, username: String, password: String, accountTypeIndex: Int) {
@@ -78,10 +79,8 @@ class FirebaseService {
         }
     }
     
-    func fetchUserData(completion: @escaping(User) -> Void) {
-        guard let userEmail = Auth.auth().currentUser?.email else { return }
-        
-        usersCollection.whereField("email", isEqualTo: userEmail).getDocuments { (querySnapshot, error) in
+    func fetchUserData(email: String, completion: @escaping(User) -> Void) {
+        usersCollection.whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("DEBUG: Error getting documents: \(error.localizedDescription)")
             }
@@ -94,20 +93,24 @@ class FirebaseService {
         }
     }
     
-    func fetchDrivers(location: CLLocation, completion: @escaping(User) -> Void) {
+    func fetchDrivers(currentLocation: CLLocation, completion: @escaping(User) -> Void) {
         // guard let userEmail = Auth.auth().currentUser?.email else { return }
         let geoFirestore = GeoFirestore(collectionRef: driverLocationCollection)
         
-        // Query locations at 'location' with a radius of 600 meters
-        let query = geoFirestore.query(withCenter: location, radius: 0.6)
+        // Query locations at 'location' with a radius of 20 000 meters (20 km)
+        let query = geoFirestore.query(withCenter: currentLocation, radius: 20.0)
 
         // observe events for a geo query
         _ = query.observe(.documentEntered, with: { (email, location) in
-            if let location = location {
-                self.fetchUserData { user in
-                    var driver = user
-                    driver.location = location
-                    completion(driver)
+            if let email = email, let location = location {
+                // check if the distance from current user's location is less then 25000 m (25 km) (!radius doesn't work for it!)
+                if location.distance(from: currentLocation) < 20000 {
+                    self.fetchUserData(email: email, completion: { user in
+                        var driver = user
+                        driver.location = location
+                        print("DEBUG: \(driver)")
+                        completion(driver)
+                    })
                 }
             }
         })

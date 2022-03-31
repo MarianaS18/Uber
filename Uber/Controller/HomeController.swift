@@ -30,7 +30,6 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         // FirebaseService.shared.signOut()
         setupUI()
-        fetchUserData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +46,7 @@ class HomeController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
     }
     
+    // check if user is logged in
     private func checkUser() {
         if !FirebaseService.shared.checkIfUserLoggedIn() {
             DispatchQueue.main.async {
@@ -57,6 +57,7 @@ class HomeController: UIViewController {
         } else {
             setupMapView()
             fetchDrivers()
+            fetchUserData()
         }
     }
     
@@ -113,14 +114,15 @@ class HomeController: UIViewController {
     }
     
     private func fetchUserData() {
-        FirebaseService.shared.fetchUserData { user in
+        guard let currentEmail = FirebaseService.shared.currentEmail else { return }
+        FirebaseService.shared.fetchUserData(email: currentEmail) { user in
             self.user = user
         }
     }
     
     private func fetchDrivers() {
         guard let location = locationManager?.location else { return }
-        FirebaseService.shared.fetchDrivers(location: location) { driver in
+        FirebaseService.shared.fetchDrivers(currentLocation: location) { driver in
             guard let coordinate = driver.location?.coordinate else { return }
             let annotation = DriverAnnotation(uid: driver.email, coordinate: coordinate)
             
@@ -224,7 +226,7 @@ extension HomeController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? DriverAnnotation {
             let view = MKAnnotationView(annotation: annotation, reuseIdentifier: Constants.annotationId)
-            view.image = UIImage(systemName: "arrow.right.circle.fill")
+            view.image = UIImage(systemName: "car.circle.fill")?.withTintColor(.red, renderingMode: .automatic)
             return view
         }
         return nil
