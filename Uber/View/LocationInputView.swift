@@ -9,6 +9,7 @@ import UIKit
 
 protocol LocationInputViewDelegate: AnyObject {
     func dismissLocationInputView()
+    func executeSearch(query: String)
 }
 
 class LocationInputView: UIView {
@@ -59,13 +60,14 @@ class LocationInputView: UIView {
         return textField
     }()
     
-    private let destinationTextField: UITextField = {
+    private lazy var destinationTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter a Destination"
         textField.backgroundColor = .lightGray
         textField.returnKeyType = .search
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.setLeftPadding(8)
+        textField.delegate = self
         return textField
     }()
     
@@ -128,4 +130,14 @@ class LocationInputView: UIView {
         delegate?.dismissLocationInputView()
     }
     
+}
+
+// MARK: - UITextFieldDelegate
+extension LocationInputView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let query = textField.text else { return false }
+        textField.resignFirstResponder()
+        delegate?.executeSearch(query: query)
+        return true
+    }
 }
