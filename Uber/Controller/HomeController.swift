@@ -114,6 +114,17 @@ class HomeController: UIViewController {
         view.addSubview(tableView)
     }
     
+    private func dissmissLocationView(completion: ((Bool) -> Void)? = nil) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.locationInputView.alpha = 0
+            self.tableView.frame.origin.y = self.view.frame.height
+            self.locationInputView.removeFromSuperview()
+            UIView.animate(withDuration: 0.3) {
+                self.locationInputActivationView.alpha = 1
+            }
+        }, completion: completion)
+    }
+    
     private func fetchUserData() {
         guard let currentEmail = FirebaseService.shared.currentEmail else { return }
         FirebaseService.shared.fetchUserData(email: currentEmail) { user in
@@ -191,17 +202,8 @@ extension HomeController: LocationInputViewDelegate {
         }
     }
     
-    
     func dismissLocationInputView() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.locationInputView.alpha = 0
-            self.tableView.frame.origin.y = self.view.frame.height
-        }) { _ in
-            self.locationInputView.removeFromSuperview()
-            UIView.animate(withDuration: 0.3) {
-                self.locationInputActivationView.alpha = 1
-            }
-        }
+        dissmissLocationView()
     }
     
 }
@@ -223,12 +225,24 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.locationCellId, for: indexPath) as! LocationCell
+        
         if indexPath.section == 1 {
             cell.placemark = searchResults[indexPath.row]
         }
+        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedPlacemark = searchResults[indexPath.row]
+        
+        dissmissLocationView { _ in
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = selectedPlacemark.coordinate
+            self.mapView.addAnnotation(annotation)
+            self.mapView.selectAnnotation(annotation, animated: true)
+        }
+    }
 }
 
 // MARK: - MKMapViewDelegate
