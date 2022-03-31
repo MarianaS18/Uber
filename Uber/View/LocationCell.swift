@@ -6,17 +6,26 @@
 //
 
 import UIKit
+import MapKit
 
 class LocationCell: UITableViewCell {
     
     // MARK: - Private properties
     private let titleLabel: UILabel = {
-        return UILabel().createLabel("Test titl", UIFont.systemFont(ofSize: 14), UIColor.black)
+        return UILabel().createLabel("", UIFont.systemFont(ofSize: 14), UIColor.black)
     }()
     
     private let addressLabel: UILabel = {
-        return UILabel().createLabel("Test address", UIFont.systemFont(ofSize: 14), UIColor.gray)
+        return UILabel().createLabel("", UIFont.systemFont(ofSize: 14), UIColor.gray)
     }()
+    
+    // MARK: - Public properties
+    var placemark: MKPlacemark? {
+        didSet {
+            titleLabel.text = placemark?.name
+            addressLabel.text = placemark?.address
+        }
+    }
 
     // MARK: - View functions
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

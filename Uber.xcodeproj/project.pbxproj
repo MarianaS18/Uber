@@ -31,6 +31,7 @@
 		56784E1E27DB596E00F069CA /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E1D27DB596E00F069CA /* LocationCell.swift */; };
 		56784E2027DB5D3000F069CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E1F27DB5D3000F069CA /* Constants.swift */; };
 		56784E2227DCCEE400F069CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E2127DCCEE400F069CA /* User.swift */; };
+		56DE380527F5C12B007E826D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE380427F5C12B007E826D /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,6 +74,7 @@
 		56784E1D27DB596E00F069CA /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		56784E1F27DB5D3000F069CA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		56784E2127DCCEE400F069CA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		56DE380427F5C12B007E826D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		E9A7E11F2002A4CCEEE22F7A /* Pods_Uber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF59807893BEEA5253D71AFC /* Pods-Uber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.debug.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +183,7 @@
 				564C9B4727D913F90005E2BF /* UILabel extensions.swift */,
 				564C9B4927D914B80005E2BF /* UIButton extensions.swift */,
 				5671716F27DA0737007168ED /* AuthErrorCode extensions.swift */,
+				56DE380427F5C12B007E826D /* File.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				564C9B2027D8B1D20005E2BF /* AppDelegate.swift in Sources */,
 				5633D63127E8A4FF00D75702 /* LocationHandler.swift in Sources */,
 				564C9B4A27D914B80005E2BF /* UIButton extensions.swift in Sources */,
+				56DE380527F5C12B007E826D /* File.swift in Sources */,
 				5671716E27DA0009007168ED /* HomeController.swift in Sources */,
 				564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */,
 				56784E1E27DB596E00F069CA /* LocationCell.swift in Sources */,
