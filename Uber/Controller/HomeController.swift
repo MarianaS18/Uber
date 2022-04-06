@@ -164,18 +164,31 @@ class HomeController: UIViewController {
         }
     }
     
+    private func configuerActionButton(config: ActionButtonConfiguration) {
+        switch config {
+        case .showMenu:
+            self.actionButton.setImage(UIImage(named: "baseline_menu_black_36dp")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            self.actionButtonConfig = .showMenu
+        case .dismissActionView:
+            actionButton.setImage(UIImage(named: "baseline_arrow_back_black_36dp")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            actionButtonConfig = .dismissActionView
+        }
+    }
+    
     // MARK: - Private @objc functions
     @objc private func actionButtonPressed() {
         switch actionButtonConfig {
         case .showMenu:
             print("DEBUG: show menu")
         case .dismissActionView:
-            print("DEBUG: dismiss")
-            
+            mapView.annotations.forEach { annotation in
+                if let annotation = annotation as? MKPointAnnotation {
+                    mapView.removeAnnotation(annotation)
+                }
+            }
             UIView.animate(withDuration: 0.3) {
                 self.locationInputActivationView.alpha = 1
-                self.actionButton.setImage(UIImage(named: "baseline_menu_black_36dp")?.withRenderingMode(.alwaysOriginal), for: .normal)
-                self.actionButtonConfig = .showMenu
+                self.configuerActionButton(config: .showMenu)
             }
         }
     }
@@ -262,8 +275,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedPlacemark = searchResults[indexPath.row]
-        actionButton.setImage(UIImage(named: "baseline_arrow_back_black_36dp")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        actionButtonConfig = .dismissActionView
+        
+        configuerActionButton(config: .dismissActionView)
         
         dissmissLocationView { _ in
             let annotation = MKPointAnnotation()
