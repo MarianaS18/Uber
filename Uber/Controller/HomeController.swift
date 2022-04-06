@@ -18,12 +18,20 @@ class HomeController: UIViewController {
     private var searchResults = [MKPlacemark]()
     
     private let locationInputViewHeight: CGFloat = 200
+    private var actionButtonConfig = ActionButtonConfiguration()
     
     private var user: User? {
         didSet {
             locationInputView.user = user
         }
     }
+    
+    private let actionButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "baseline_menu_black_36dp")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
+        return button
+    }()
     
     
     // MARK: - View functions
@@ -76,8 +84,11 @@ class HomeController: UIViewController {
     }
     
     private func setupConstraints() {
+        view.addSubview(actionButton)
+        actionButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 8, paddingLeft: 32, width: 30, height: 30)
+        
         view.addSubview(locationInputActivationView)
-        locationInputActivationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 40, paddingLeft: 32, paddingRight: 32, height: 50)
+        locationInputActivationView.anchor(top: actionButton.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32, height: 50)
         locationInputActivationView.alpha = 0
         locationInputActivationView.delegate = self
         
@@ -119,9 +130,6 @@ class HomeController: UIViewController {
             self.locationInputView.alpha = 0
             self.tableView.frame.origin.y = self.view.frame.height
             self.locationInputView.removeFromSuperview()
-            UIView.animate(withDuration: 0.3) {
-                self.locationInputActivationView.alpha = 1
-            }
         }, completion: completion)
     }
     
@@ -156,6 +164,21 @@ class HomeController: UIViewController {
         }
     }
     
+    // MARK: - Private @objc functions
+    @objc private func actionButtonPressed() {
+        switch actionButtonConfig {
+        case .showMenu:
+            print("DEBUG: show menu")
+        case .dismissActionView:
+            print("DEBUG: dismiss")
+            
+            UIView.animate(withDuration: 0.3) {
+                self.locationInputActivationView.alpha = 1
+                self.actionButton.setImage(UIImage(named: "baseline_menu_black_36dp")?.withRenderingMode(.alwaysOriginal), for: .normal)
+                self.actionButtonConfig = .showMenu
+            }
+        }
+    }
 }
 
 // MARK: - LocationServices
@@ -203,7 +226,11 @@ extension HomeController: LocationInputViewDelegate {
     }
     
     func dismissLocationInputView() {
-        dissmissLocationView()
+        dissmissLocationView { _ in
+            UIView.animate(withDuration: 0.5) {
+                self.locationInputActivationView.alpha = 1
+            }
+        }
     }
     
 }
@@ -235,6 +262,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedPlacemark = searchResults[indexPath.row]
+        actionButton.setImage(UIImage(named: "baseline_arrow_back_black_36dp")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        actionButtonConfig = .dismissActionView
         
         dissmissLocationView { _ in
             let annotation = MKPointAnnotation()

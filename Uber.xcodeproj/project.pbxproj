@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5603C5D327FD74080065DFED /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5603C5D227FD74080065DFED /* Enums.swift */; };
 		5616EC2C27DA2ABD00B701FF /* LocationInputActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616EC2B27DA2ABD00B701FF /* LocationInputActivationView.swift */; };
 		5616EC2E27DA3F9600B701FF /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616EC2D27DA3F9600B701FF /* LocationInputView.swift */; };
 		561F249227D929B3005A9EF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 561F249127D929B3005A9EF0 /* GoogleService-Info.plist */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		34114A157EED03F0A72F52D2 /* Pods-Uber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.release.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.release.xcconfig"; sourceTree = "<group>"; };
+		5603C5D227FD74080065DFED /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		5616EC2B27DA2ABD00B701FF /* LocationInputActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputActivationView.swift; sourceTree = "<group>"; };
 		5616EC2D27DA3F9600B701FF /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
 		561F249127D929B3005A9EF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				56784E1F27DB5D3000F069CA /* Constants.swift */,
 				5633D63027E8A4FF00D75702 /* LocationHandler.swift */,
+				5603C5D227FD74080065DFED /* Enums.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				5616EC2C27DA2ABD00B701FF /* LocationInputActivationView.swift in Sources */,
 				564C9B2027D8B1D20005E2BF /* AppDelegate.swift in Sources */,
 				5633D63127E8A4FF00D75702 /* LocationHandler.swift in Sources */,
+				5603C5D327FD74080065DFED /* Enums.swift in Sources */,
 				564C9B4A27D914B80005E2BF /* UIButton extensions.swift in Sources */,
 				56DE380527F5C12B007E826D /* File.swift in Sources */,
 				5671716E27DA0009007168ED /* HomeController.swift in Sources */,
