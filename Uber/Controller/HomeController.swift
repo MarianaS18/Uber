@@ -14,6 +14,7 @@ class HomeController: UIViewController {
     private let locationManager = LocationHandler.shared.locationManager
     private let locationInputActivationView = LocationInputActivationView()
     private let locationInputView = LocationInputView()
+    private let rideActionView = RideActionView()
     private let tableView = UITableView()
     private var searchResults = [MKPlacemark]()
     private let locationInputViewHeight: CGFloat = 200
@@ -95,6 +96,9 @@ class HomeController: UIViewController {
         UIView.animate(withDuration: 1) {
             self.locationInputActivationView.alpha = 1
         }
+        
+        view.addSubview(rideActionView)
+        rideActionView.frame = CGRect(x: 0, y: view.frame.height - 300, width: view.frame.width, height: 300)
     }
     
     private func setupLocationInputView() {

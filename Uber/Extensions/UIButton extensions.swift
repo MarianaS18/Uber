@@ -42,4 +42,14 @@ extension UIButton {
         return button
     }
     
+    func createBlackButton(withText text: String) -> UIButton {
+        let button = UIButton()
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitle(text, for: .normal)
+        button.backgroundColor = .black
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        return button
+    }
+    
 }

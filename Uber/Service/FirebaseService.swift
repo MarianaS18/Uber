@@ -94,7 +94,6 @@ class FirebaseService {
     }
     
     func fetchDrivers(currentLocation: CLLocation, completion: @escaping(User) -> Void) {
-        // guard let userEmail = Auth.auth().currentUser?.email else { return }
         let geoFirestore = GeoFirestore(collectionRef: driverLocationCollection)
         
         // Query locations at 'location' with a radius of 20 000 meters (20 km)
@@ -103,12 +102,11 @@ class FirebaseService {
         // observe events for a geo query
         _ = query.observe(.documentEntered, with: { (email, location) in
             if let email = email, let location = location {
-                // check if the distance from current user's location is less then 25000 m (25 km) (!radius doesn't work for it!)
+                // check if the distance from current user's location is less then 20000 m (20 km) (!radius doesn't work for it!)
                 if location.distance(from: currentLocation) < 20000 {
                     self.fetchUserData(email: email, completion: { user in
                         var driver = user
                         driver.location = location
-                        print("DEBUG: \(driver)")
                         completion(driver)
                     })
                 }
