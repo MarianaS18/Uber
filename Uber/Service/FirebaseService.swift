@@ -153,7 +153,10 @@ class FirebaseService {
         let destinationArray = [destinationCoordinates.latitude, destinationCoordinates.longitude]
         
         // create a dictionary that we want to upload
-        let values = ["uid": email, "pickupCoordinates": pickupArray, "destinationCoordinates": destinationArray] as [String : Any]
+        let values = ["uid": email,
+                      "pickupCoordinates": pickupArray,
+                      "destinationCoordinates": destinationArray,
+                      "state": TripState.requested.rawValue] as [String : Any]
         
         tripsCollection.addDocument(data: values, completion: completion)
     }
