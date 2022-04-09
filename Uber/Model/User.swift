@@ -9,15 +9,23 @@ import Foundation
 import Firebase
 import CoreLocation
 
+enum AccountType: Int {
+    case passanger // 0
+    case driver // 1
+}
+
 struct User {
     let username: String
     let email: String
-    let accountType: Int
+    var accountType: AccountType!
     var location: CLLocation?
     
-    init(document: QueryDocumentSnapshot) {
-        self.username = document.get("username") as? String ?? ""
-        self.email = document.get("email") as? String ?? ""
-        self.accountType = document.get("accountType") as? Int ?? 0
+    init(dictionary: [String: Any]) {
+        self.username = dictionary["username"] as? String ?? ""
+        self.email = dictionary["email"] as? String ?? ""
+        
+        if let index = dictionary["accountType"] as? Int {
+            self.accountType = AccountType(rawValue: index)!
+        }
     }
 }

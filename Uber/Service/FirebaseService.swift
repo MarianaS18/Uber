@@ -88,7 +88,8 @@ class FirebaseService {
             }
             else {
                 for document in querySnapshot!.documents {
-                    let user = User(document: document)
+                    let dictionary = document.data() as [String: Any]
+                    let user = User(dictionary: dictionary)
                     completion(user)
                 }
             }

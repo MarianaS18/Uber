@@ -25,6 +25,11 @@ class HomeController: UIViewController {
     private var user: User? {
         didSet {
             locationInputView.user = user
+            if user?.accountType == .passanger {
+                fetchDrivers()
+                setupInputActivationView()
+            }
+            print("DEBUG: User account type is \((user?.accountType)!)")
         }
     }
     
@@ -39,7 +44,7 @@ class HomeController: UIViewController {
     // MARK: - View functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        // FirebaseService.shared.signOut()
+        //FirebaseService.shared.signOut()
         setupUI()
     }
     
@@ -67,7 +72,6 @@ class HomeController: UIViewController {
             }
         } else {
             setupMapView()
-            fetchDrivers()
             fetchUserData()
         }
     }
@@ -89,18 +93,20 @@ class HomeController: UIViewController {
         view.addSubview(actionButton)
         actionButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 8, paddingLeft: 32, width: 30, height: 30)
         
+        view.addSubview(rideActionView)
+        rideActionView.delegate = self
+        rideActionView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: rideActionViewHeight)
+    }
+    
+    private func setupInputActivationView() {
         view.addSubview(locationInputActivationView)
         locationInputActivationView.anchor(top: actionButton.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32, height: 50)
         locationInputActivationView.alpha = 0
         locationInputActivationView.delegate = self
         
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.5) {
             self.locationInputActivationView.alpha = 1
         }
-        
-        view.addSubview(rideActionView)
-        rideActionView.delegate = self
-        rideActionView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: rideActionViewHeight)
     }
     
     private func setupLocationInputView() {
