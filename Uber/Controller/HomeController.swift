@@ -99,6 +99,7 @@ class HomeController: UIViewController {
         }
         
         view.addSubview(rideActionView)
+        rideActionView.delegate = self
         rideActionView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: rideActionViewHeight)
     }
     
@@ -382,6 +383,21 @@ private extension HomeController {
             self.route = response.routes[0]
             guard let polyline = self.route?.polyline else { return }
             self.mapView.addOverlay(polyline)
+        }
+    }
+}
+
+// MARK: - RideActionViewDelegate
+extension HomeController: RideActionViewDelegate {
+    func uploadTrip(_ view: RideActionView) {
+        guard let pickupCoordinates = locationManager?.location?.coordinate else { return }
+        guard let destinationCoordinates = view.destination?.coordinate else { return }
+        FirebaseService.shared.uploadTrip(pickupCoordinates, destinationCoordinates) { error in
+            if let error = error {
+                print("DEBUG: Failed to upload trip with error \(error.localizedDescription)")
+                return
+            }
+            print("DEBUG: Did uploaded trip")
         }
     }
 }

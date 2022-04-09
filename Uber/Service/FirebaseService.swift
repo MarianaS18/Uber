@@ -23,6 +23,8 @@ class FirebaseService {
     // MARK: - Private properties
     private let usersCollection = Firestore.firestore().collection("users")
     private let driverLocationCollection = Firestore.firestore().collection("driver-locations")
+    private let tripsCollection = Firestore.firestore().collection("trips")
+
     private var location = LocationHandler.shared.locationManager.location
     
     // MARK: - Public properties
@@ -143,5 +145,17 @@ class FirebaseService {
         }
     }
 
+    func uploadTrip(_ pickupCoordinates: CLLocationCoordinate2D, _ destinationCoordinates: CLLocationCoordinate2D, completion: @escaping(Error?) -> Void) {
+        guard let email = Auth.auth().currentUser?.email  else { return }
+        
+        // create an array out of pickup coordinates and destination coordinates
+        let pickupArray = [pickupCoordinates.latitude, pickupCoordinates.longitude]
+        let destinationArray = [destinationCoordinates.latitude, destinationCoordinates.longitude]
+        
+        // create a dictionary that we want to upload
+        let values = ["uid": email, "pickupCoordinates": pickupArray, "destinationCoordinates": destinationArray] as [String : Any]
+        
+        tripsCollection.addDocument(data: values, completion: completion)
+    }
 }
 

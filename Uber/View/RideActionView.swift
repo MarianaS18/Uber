@@ -8,6 +8,10 @@
 import UIKit
 import MapKit
 
+protocol RideActionViewDelegate: AnyObject {
+    func uploadTrip(_ view: RideActionView)
+}
+
 class RideActionView: UIView {
     // MARK: - Private properties
     private let titleLabel: UILabel =  {
@@ -51,6 +55,8 @@ class RideActionView: UIView {
             addressLabel.text = destination?.address
         }
     }
+    
+    weak var delegate: RideActionViewDelegate?
     
     // MARK: - View functions
     override init(frame: CGRect) {
@@ -100,6 +106,6 @@ class RideActionView: UIView {
     
     // MARK: - Private @objc functions
     @objc private func actionButtonPressed() {
-        print("DEBUG: 123")
+        delegate?.uploadTrip(self)
     }
 }
