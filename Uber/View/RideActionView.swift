@@ -6,17 +6,18 @@
 //
 
 import UIKit
+import MapKit
 
 class RideActionView: UIView {
     // MARK: - Private properties
     private let titleLabel: UILabel =  {
-        let label = UILabel().createLabel("Test title", UIFont.systemFont(ofSize: 18), .black)
+        let label = UILabel().createLabel("", UIFont.systemFont(ofSize: 18), .black)
         label.textAlignment = .center
         return label
     }()
     
     private let addressLabel: UILabel = {
-        let label = UILabel().createLabel("Test address", UIFont.systemFont(ofSize: 16), .lightGray)
+        let label = UILabel().createLabel("", UIFont.systemFont(ofSize: 16), .lightGray)
         label.textAlignment = .center
         return label
     }()
@@ -42,6 +43,14 @@ class RideActionView: UIView {
         button.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Public properties
+    var destination: MKPlacemark? {
+        didSet {
+            titleLabel.text = destination?.name
+            addressLabel.text = destination?.address
+        }
+    }
     
     // MARK: - View functions
     override init(frame: CGRect) {
