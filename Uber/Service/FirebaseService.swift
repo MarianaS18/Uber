@@ -29,7 +29,7 @@ class FirebaseService {
     
     // MARK: - Public properties
     var delegate: FirebaseServiceDelegate?
-    let currentEmail = Auth.auth().currentUser?.email
+    let auth = Auth.auth()
 
     // MARK: - Public functions
     func signUp(email: String, username: String, password: String, accountTypeIndex: Int) {

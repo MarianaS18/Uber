@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Firebase
 import CoreLocation
 
 enum AccountType: Int {

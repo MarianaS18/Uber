@@ -40,17 +40,27 @@ class HomeController: UIViewController {
         return button
     }()
     
+    // MARK: - DELETE
+    private let loguotButton: UIButton = {
+        let button = UIButton(type: .system).createBlackButton(withText: "Log Out")
+        button.addTarget(self, action: #selector(logoutPressed), for: .touchUpInside)
+        return button
+    }()
+    
     
     // MARK: - View functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        //FirebaseService.shared.signOut()
         setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         checkUser()
         enableLocationServices()
+        
+        if FirebaseService.shared.checkIfUserLoggedIn() {
+            print("DEBUG: \(FirebaseService.shared.auth.currentUser?.email)")
+        }
     }
     
     // MARK: - Private functions
@@ -96,6 +106,10 @@ class HomeController: UIViewController {
         view.addSubview(rideActionView)
         rideActionView.delegate = self
         rideActionView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: rideActionViewHeight)
+        
+        // MARK: - DELETE
+        view.addSubview(loguotButton)
+        loguotButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 16, paddingRight: 16, width: 100 ,height: 40)
     }
     
     private func setupInputActivationView() {
@@ -146,7 +160,7 @@ class HomeController: UIViewController {
     }
     
     private func fetchUserData() {
-        guard let currentEmail = FirebaseService.shared.currentEmail else { return }
+        guard let currentEmail = FirebaseService.shared.auth.currentUser?.email else { return }
         FirebaseService.shared.fetchUserData(email: currentEmail) { user in
             self.user = user
         }
@@ -228,6 +242,19 @@ class HomeController: UIViewController {
             }
         }
     }
+    
+    // MARK: - DELETE
+    @objc private func logoutPressed() {
+        FirebaseService.shared.signOut()
+        DispatchQueue.main.async {
+            let allAnnotations = self.mapView.annotations
+            self.mapView.removeAnnotations(allAnnotations)
+            let nav = UINavigationController(rootViewController: LoginController())
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 // MARK: - LocationServices
