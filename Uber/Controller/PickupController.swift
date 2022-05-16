@@ -37,6 +37,7 @@ class PickupController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupMapView()
     }
     
     // initialize a controller with a custom object
@@ -68,6 +69,16 @@ class PickupController: UIViewController {
         
         view.addSubview(acceptTripButton)
         acceptTripButton.anchor(top: pickupLabel.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 16, paddingLeft: 32, paddingRight: 32)
+    }
+    
+    private func setupMapView() {
+        let region = MKCoordinateRegion(center: trip.pickupCoordinates, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mapView.setRegion(region, animated: false)
+        
+        let annotaion = MKPointAnnotation()
+        annotaion.coordinate = trip.pickupCoordinates
+        mapView.addAnnotation(annotaion)
+        mapView.selectAnnotation(annotaion, animated: true)
     }
     
     // MARK: - Private @objc functions
