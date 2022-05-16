@@ -44,12 +44,22 @@ extension UIButton {
     
     func createBlackButton(withText text: String) -> UIButton {
         let button = UIButton()
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.setTitle(text, for: .normal)
-        button.backgroundColor = .black
+        button.backgroundColor = .white
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         return button
     }
     
+    func createWhiteButton(withText text: String) -> UIButton {
+        let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
+        button.setTitle(text, for: .normal)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 5
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        return button
+    }
 }

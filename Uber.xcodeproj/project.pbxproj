@@ -34,6 +34,7 @@
 		56784E1E27DB596E00F069CA /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E1D27DB596E00F069CA /* LocationCell.swift */; };
 		56784E2027DB5D3000F069CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E1F27DB5D3000F069CA /* Constants.swift */; };
 		56784E2227DCCEE400F069CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E2127DCCEE400F069CA /* User.swift */; };
+		5686460328322DE8000BEF7D /* PickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686460228322DE8000BEF7D /* PickupController.swift */; };
 		56D328CB28087AA100395512 /* Pods_Uber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A7E11F2002A4CCEEE22F7A /* Pods_Uber.framework */; };
 		56DE380527F5C12B007E826D /* MKPlacemark extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE380427F5C12B007E826D /* MKPlacemark extensions.swift */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		56784E1D27DB596E00F069CA /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		56784E1F27DB5D3000F069CA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		56784E2127DCCEE400F069CA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5686460228322DE8000BEF7D /* PickupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupController.swift; sourceTree = "<group>"; };
 		56DE380427F5C12B007E826D /* MKPlacemark extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPlacemark extensions.swift"; sourceTree = "<group>"; };
 		E9A7E11F2002A4CCEEE22F7A /* Pods_Uber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF59807893BEEA5253D71AFC /* Pods-Uber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.debug.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				564C9B3827D8B2920005E2BF /* LoginController.swift */,
 				564C9B4327D904F70005E2BF /* SignUpController.swift */,
 				5671716D27DA0009007168ED /* HomeController.swift */,
+				5686460228322DE8000BEF7D /* PickupController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				5603C5D327FD74080065DFED /* Enums.swift in Sources */,
 				564C9B4A27D914B80005E2BF /* UIButton extensions.swift in Sources */,
 				56DE380527F5C12B007E826D /* MKPlacemark extensions.swift in Sources */,
+				5686460328322DE8000BEF7D /* PickupController.swift in Sources */,
 				5671716E27DA0009007168ED /* HomeController.swift in Sources */,
 				564C9B3927D8B2920005E2BF /* LoginController.swift in Sources */,
 				56784E1E27DB596E00F069CA /* LocationCell.swift in Sources */,
