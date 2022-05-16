@@ -24,7 +24,6 @@ class LocationInputView: UIView {
     // MARK: - Private properties
     private let backButton: UIButton = {
         let button = UIButton().createBackButton()
-        button.addTarget(self, action: #selector(handleBackTapped), for: .touchUpInside)
         return button
     }()
     
@@ -95,7 +94,8 @@ class LocationInputView: UIView {
     private func setupConstraints() {
         addSubview(backButton)
         backButton.anchor(top: self.topAnchor, left: self.leftAnchor, paddingTop: 44, paddingLeft: 16, width: 24, height: 25)
-        
+        backButton.addTarget(self, action: #selector(handleBackTapped), for: .touchUpInside)
+
         addSubview(titleLabel)
         titleLabel.centerX(inView: self)
         titleLabel.centerY(inView: backButton)

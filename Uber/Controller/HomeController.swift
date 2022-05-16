@@ -28,22 +28,27 @@ class HomeController: UIViewController {
             if user?.accountType == .passanger {
                 fetchDrivers()
                 setupInputActivationView()
+            } else {
+                observeTrips()
             }
-            print("DEBUG: User account type is \((user?.accountType)!)")
+        }
+    }
+    
+    private var trip: Trip? {
+        didSet {
+            print("DEBUG: Show pickup passenger controller")
         }
     }
     
     private let actionButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "baseline_menu_black_36dp")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        button.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
         return button
     }()
     
     // MARK: - DELETE
     private let loguotButton: UIButton = {
         let button = UIButton(type: .system).createBlackButton(withText: "Log Out")
-        button.addTarget(self, action: #selector(logoutPressed), for: .touchUpInside)
         return button
     }()
     
@@ -57,10 +62,6 @@ class HomeController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         checkUser()
         enableLocationServices()
-        
-        if FirebaseService.shared.checkIfUserLoggedIn() {
-            print("DEBUG: \(FirebaseService.shared.auth.currentUser?.email)")
-        }
     }
     
     // MARK: - Private functions
@@ -102,7 +103,8 @@ class HomeController: UIViewController {
     private func setupConstraints() {
         view.addSubview(actionButton)
         actionButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 8, paddingLeft: 32, width: 30, height: 30)
-        
+        actionButton.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
+
         view.addSubview(rideActionView)
         rideActionView.delegate = self
         rideActionView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: rideActionViewHeight)
@@ -110,6 +112,7 @@ class HomeController: UIViewController {
         // MARK: - DELETE
         view.addSubview(loguotButton)
         loguotButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 16, paddingRight: 16, width: 100 ,height: 40)
+        loguotButton.addTarget(self, action: #selector(logoutPressed), for: .touchUpInside)
     }
     
     private func setupInputActivationView() {
@@ -223,6 +226,12 @@ class HomeController: UIViewController {
         
         UIView.animate(withDuration: 0.3) {
             self.rideActionView.frame.origin.y = yOrigin
+        }
+    }
+    
+    private func observeTrips() {
+        FirebaseService.shared.observeTrips { trip in
+            self.trip = trip
         }
     }
     

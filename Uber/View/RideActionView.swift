@@ -44,7 +44,6 @@ class RideActionView: UIView {
     
     private let actionButton: UIButton = {
         let button = UIButton().createBlackButton(withText: "CONFIRM UBERX")
-        button.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -102,6 +101,7 @@ class RideActionView: UIView {
         
         addSubview(actionButton)
         actionButton.anchor(top: separatorView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 16, paddingRight: 16)
+        actionButton.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
     }
     
     // MARK: - Private @objc functions

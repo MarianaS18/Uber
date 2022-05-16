@@ -16,7 +16,6 @@
 		5620DBF02801AC2800BAB7BC /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5620DBEF2801AC2800BAB7BC /* Trip.swift */; };
 		56270CCB27E9D71500E38722 /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56270CCA27E9D71500E38722 /* DriverAnnotation.swift */; };
 		56284C4F27E868B600D559DA /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5633D62E27E89F8100D75702 /* Pods_Uber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A7E11F2002A4CCEEE22F7A /* Pods_Uber.framework */; };
 		5633D63127E8A4FF00D75702 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633D63027E8A4FF00D75702 /* LocationHandler.swift */; };
 		564C9B2027D8B1D20005E2BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B1F27D8B1D20005E2BF /* AppDelegate.swift */; };
 		564C9B2227D8B1D20005E2BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564C9B2127D8B1D20005E2BF /* SceneDelegate.swift */; };
@@ -35,6 +34,7 @@
 		56784E1E27DB596E00F069CA /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E1D27DB596E00F069CA /* LocationCell.swift */; };
 		56784E2027DB5D3000F069CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E1F27DB5D3000F069CA /* Constants.swift */; };
 		56784E2227DCCEE400F069CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56784E2127DCCEE400F069CA /* User.swift */; };
+		56D328CB28087AA100395512 /* Pods_Uber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A7E11F2002A4CCEEE22F7A /* Pods_Uber.framework */; };
 		56DE380527F5C12B007E826D /* MKPlacemark extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE380427F5C12B007E826D /* MKPlacemark extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5633D62E27E89F8100D75702 /* Pods_Uber.framework in Frameworks */,
+				56D328CB28087AA100395512 /* Pods_Uber.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +429,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -490,6 +491,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -529,6 +531,68 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseFirestore\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GeoFire\"",
+					"-framework",
+					"\"Geofirestore\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Protobuf\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"grpc\"",
+					"-framework",
+					"\"grpcpp\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-framework",
+					"\"openssl\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = dk.mariana.Uber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -557,6 +621,69 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseFirestore\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GeoFire\"",
+					"-framework",
+					"\"Geofirestore\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Protobuf\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"grpc\"",
+					"-framework",
+					"\"grpcpp\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-framework",
+					"\"openssl\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = dk.mariana.Uber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

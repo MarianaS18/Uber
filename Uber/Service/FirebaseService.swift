@@ -106,7 +106,7 @@ class FirebaseService {
         _ = query.observe(.documentEntered, with: { (email, location) in
             if let email = email, let location = location {
                 // check if the distance from current user's location is less then 20000 m (20 km) (!radius doesn't work for it!)
-                if location.distance(from: currentLocation) < 20000 {
+                if location.distance(from: currentLocation) <= 20000 {
                     self.fetchUserData(email: email, completion: { user in
                         var driver = user
                         driver.location = location
@@ -133,9 +133,8 @@ class FirebaseService {
     }
     
     private func createDriverLocation(dokId: String, accountType: Int) {
-        let geoFirestore = GeoFirestore(collectionRef: driverLocationCollection)
-        
         if accountType == 1 {
+            let geoFirestore = GeoFirestore(collectionRef: driverLocationCollection)
             geoFirestore.setLocation(location: location!, forDocumentWithID: dokId) { error in
                 if let error = error {
                     print("DEBUG: An error occured: \(error.localizedDescription)")
@@ -160,6 +159,21 @@ class FirebaseService {
                       "state": TripState.requested.rawValue] as [String : Any]
         
         tripsCollection.addDocument(data: values, completion: completion)
+    }
+    
+    func observeTrips(completion: @escaping(Trip) -> Void) {
+        tripsCollection.addSnapshotListener { snapshot, error in
+            if let error = error {
+                print("DEBUG: Error getting documents: \(error.localizedDescription)")
+            } else {
+                guard let dictionary = snapshot?.documents else { return }
+                for document in dictionary {
+                    let tripData = document.data() as [String: Any]
+                    let trip = Trip(passengerId: document.documentID, dictionary: tripData)
+                    completion(trip)
+                }
+            }
+        }
     }
 }
 

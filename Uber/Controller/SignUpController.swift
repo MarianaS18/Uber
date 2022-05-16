@@ -60,13 +60,11 @@ class SignUpController: UIViewController {
     
     private let signInButton: UIButton = {
         let button = UIButton().createBlueButton(withText: "Sign Up")
-        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return button
     }()
     
     private let alreadyHaveAccountButton: UIButton = {
         let button = UIButton().createTextButton(text: "Already have an account? ", nextText: "Log In")
-        button.addTarget(self, action: #selector(handleShowLogIn), for: .touchUpInside)
         return button
     }()
     
@@ -98,6 +96,8 @@ class SignUpController: UIViewController {
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor)
         titleLabel.centerX(inView: view)
         
+        signInButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+
         let stackView = UIStackView(arrangedSubviews: [emailContainerView, nameContainerView, passwordContainerView, accountTypeConteinerView, signInButton])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
@@ -112,6 +112,7 @@ class SignUpController: UIViewController {
         view.addSubview(alreadyHaveAccountButton)
         alreadyHaveAccountButton.centerX(inView: view)
         alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, height: 32)
+        alreadyHaveAccountButton.addTarget(self, action: #selector(handleShowLogIn), for: .touchUpInside)
     }
     
     // MARK: - objc functions

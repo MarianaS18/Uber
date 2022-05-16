@@ -36,13 +36,11 @@ class LoginController: UIViewController {
     
     private let loginButton: UIButton = {
         let button = UIButton().createBlueButton(withText: "Log In")
-        button.addTarget(self, action: #selector(handleLogIn), for: .touchUpInside)
         return button
     }()
     
     private let dontHaveAccountButton: UIButton = {
         let button = UIButton().createTextButton(text: "Don´t have an account? ", nextText: "Sign Up")
-        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -81,6 +79,8 @@ class LoginController: UIViewController {
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor)
         titleLabel.centerX(inView: view)
         
+        loginButton.addTarget(self, action: #selector(handleLogIn), for: .touchUpInside)
+
         let stackView = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
@@ -95,6 +95,7 @@ class LoginController: UIViewController {
         view.addSubview(dontHaveAccountButton)
         dontHaveAccountButton.centerX(inView: view)
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, height: 32)
+        dontHaveAccountButton.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
     }
     
     // MARK: - objc functions
